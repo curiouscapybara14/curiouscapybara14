@@ -1,17 +1,15 @@
 <div align="center">
 
-# 🫒 Curious Capybara
+# Marian Nicole Acosta
 
-**Web Developer & Creative Technologist**
+**Information Technology Student | Web Developer | UI/UX Enthusiast**
 
-*Building beautiful, functional digital experiences with curiosity and care*
+Paranaque City, PH | costanicoa@gmail.com | +63 956 023 3636
 
-<br/>
-
-<a href="#"><img src="https://img.shields.io/badge/Portfolio-D4A5A5?style=for-the-badge&logoColor=white" alt="Portfolio"/></a>
-<a href="mailto:costanicoa@gmail.com"><img src="https://img.shields.io/badge/Email-8B7355?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/></a>
-<a href="https://www.linkedin.com/in/acostamariannicole/"><img src="https://img.shields.io/badge/LinkedIn-C4949A?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
 <a href="https://github.com/curiouscapybara14"><img src="https://img.shields.io/badge/GitHub-6B5344?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/></a>
+<a href="https://www.linkedin.com/in/acostamariannicole/"><img src="https://img.shields.io/badge/LinkedIn-D4A5A5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
+<a href="mailto:costanicoa@gmail.com"><img src="https://img.shields.io/badge/Email-8B7355?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/></a>
+<a href="/Users/nicole/Downloads/ACOSTA,M.N.- Resume.pdf"><img src="https://img.shields.io/badge/Resume-C4949A?style=for-the-badge&logoColor=white" alt="Resume"/></a>
 
 <br/>
 
@@ -19,90 +17,81 @@
 
 ## About Me
 
-Hi, I’m **Marian Nicole** — a **web developer** and **creative technologist** passionate about creating delightful digital experiences.
+I’m a BS Information Technology student at Mapua University specializing in Enterprise Data Management. I love building clean, responsive websites and creating experiences that feel intuitive and beautiful. Currently, I’m diving deeper into systems design, data structures, and what makes great web interfaces work.
 
-I specialize in building **responsive, user-centered web applications** using modern technologies. When I’m not coding, you’ll find me exploring new technologies, learning from the web community, and experimenting with creative ideas.
-
-<br/>
-
-**What I Do:**
-
-```yaml
-role:          Web Developer & Creative Technologist
-focused_on:    [Responsive Design, Frontend Development, User Experience]
-building:      [Portfolio Sites, Interactive Web Apps, Creative Experiments]
-learning:      [Advanced JavaScript, Web Performance, Design Systems]
-open_to:       [Collaborations, Web Projects, Creative Challenges]
-powered_by:    [Coffee, Curiosity, Capybara Energy]
-```
+I approach problems with curiosity and a commitment to learning — whether that’s picking up a new framework, understanding network architecture, or figuring out why my code suddenly breaks.
 
 <br/>
 
 ---
 
-## My Toolkit
+## When I’m Not Coding
 
-<div align="center">
-
-**Frontend Languages & Frameworks**
-
-<img src="https://skillicons.dev/icons?i=html,css,javascript,react,tailwind&theme=light" />
-
-<br/><br/>
-
-**Tools & Technologies**
-
-<img src="https://skillicons.dev/icons?i=git,github,vscode,figma&theme=light" />
-
-<br/><br/>
-
-**Currently Exploring**
-
-<img src="https://img.shields.io/badge/TypeScript-D4A5A5?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript"/>
-<img src="https://img.shields.io/badge/Web%20APIs-8B7355?style=flat-square&logo=javascript&logoColor=white" alt="Web APIs"/>
-<img src="https://img.shields.io/badge/Design%20Systems-C4949A?style=flat-square&logo=figma&logoColor=white" alt="Design Systems"/>
-
-</div>
+Running around, pretending I’m training for a marathon someday. Being Soy’s personal assistant (full-time cat mom duties). Exploring new places and finding little adventures along the way. Getting professionally good at catching Z’s because sleep is a hobby too. Random bursts of inspiration hit, and I turn them into little creative projects.
 
 <br/>
 
 ---
 
-## Featured Projects
+## Technical Skills
 
-<div align="center">
+**Data & Databases**  
+SQL, MySQL, Excel (formulas, pivot tables, data analysis)
 
-| Project | Description | Tech |
-|---------|-------------|------|
-| **Portfolio Website** | A responsive, beautifully designed portfolio showcasing my work and skills | HTML, CSS, JavaScript |
-| *More Coming Soon* | Exciting projects in the pipeline... | Stay tuned! |
+**Programming & Web**  
+HTML, CSS, JavaScript (basic), Python (basic), C++ (basic), PHP (basic)
 
-</div>
+**Tools**  
+VSCode, Figma, Canva, Git, Google Colab
 
-<br/>
+**Concepts**  
+Systems Analysis & Design, Enterprise Data Management, UI/UX Wireframing, OOP
 
----
-
-## Get In Touch
-
-<div align="center">
-
-<a href="mailto:costanicoa@gmail.com"><img src="https://img.shields.io/badge/Send%20an%20Email-8B7355?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/></a>
-<a href="https://www.linkedin.com/in/acostamariannicole/"><img src="https://img.shields.io/badge/Connect%20on%20LinkedIn-D4A5A5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
-<a href="https://github.com/curiouscapybara14"><img src="https://img.shields.io/badge/Follow%20on%20GitHub-6B5344?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/></a>
-
-</div>
+**Other**  
+Cisco CCNA Certified (Switching, Routing & Wireless), Responsive Design, Customer Service
 
 <br/>
 
 ---
 
-<div align="center">
+## Projects
 
-*"Building one beautiful website at a time, with the energy of a curious capybara."* 🫒
+**KAIA** | Responsive Website  
+An NGO discovery and volunteer platform bringing scattered Filipino organizations into one verified ecosystem. Features verified profiles, multi-step donations, QR check-in for volunteers, and financial transparency.
+
+**LakbAI** | Systems Analysis & Design  
+A commuter information system concept combining real-time traffic, CCTV feeds, and crowdsourced reports with accessibility features for seniors and people with disabilities.
+
+**AniGo** | AI Platform Concept  
+Farm-to-table platform using AI-driven supply-demand matching to connect farmers with consumers through SMS, mobile, and cooperative channels.
+
+**Sassy Station** | HTML, CSS, JavaScript  
+Online booking website for a nail salon, allowing clients to browse services and schedule appointments.
 
 <br/>
 
-<sub>Thanks for stopping by — let’s create something amazing together!</sub>
+---
+
+## Leadership & Growth
+
+External Vice President, SOIT Student Council | Head of Finance, SOIT Student Council  
+Cybersecurity Committee Member, Google Developer Student Clubs | Associate Director of Operations, JFINEX  
+Supported campus initiatives in financial accountability, event logistics, and digital safety awareness.
+
+<br/>
+
+---
+
+## Let’s Connect
+
+<a href="mailto:costanicoa@gmail.com"><img src="https://img.shields.io/badge/Send%20Email-8B7355?style=flat-square&logo=gmail&logoColor=white" alt="Email"/></a>
+<a href="https://www.linkedin.com/in/acostamariannicole/"><img src="https://img.shields.io/badge/LinkedIn-D4A5A5?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
+<a href="https://github.com/curiouscapybara14"><img src="https://img.shields.io/badge/GitHub-6B5344?style=flat-square&logo=github&logoColor=white" alt="GitHub"/></a>
+
+<br/>
+
+---
+
+<sub>Thanks for stopping by. Let’s build something thoughtful together.</sub>
 
 </div>
