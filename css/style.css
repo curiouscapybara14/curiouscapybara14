@@ -462,6 +462,17 @@ h2 {
     }
 }
 
+/* Floating Capybara */
+.floating-capybara {
+    position: fixed;
+    font-size: 3rem;
+    pointer-events: none;
+    z-index: 999;
+    transition: transform 0.1s ease-out;
+    opacity: 0.9;
+    filter: drop-shadow(0 2px 4px rgba(139, 115, 85, 0.2));
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .hero h1 {
@@ -481,7 +492,15 @@ h2 {
         grid-template-columns: 1fr;
     }
 
+    .skills-container {
+        grid-template-columns: 1fr;
+    }
+
     h2 {
         font-size: 2rem;
+    }
+
+    .floating-capybara {
+        font-size: 2.5rem;
     }
 }
