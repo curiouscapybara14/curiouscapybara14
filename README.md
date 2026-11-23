@@ -17,9 +17,11 @@ Paranaque City, PH | costanicoa@gmail.com | +63 956 023 3636
 
 ## About Me
 
-I’m a BS Information Technology student at Mapua University specializing in Enterprise Data Management. I love building clean, responsive websites and creating experiences that feel intuitive and beautiful. Currently, I’m diving deeper into systems design, data structures, and what makes great web interfaces work.
+I’m **Marian (Aria) Nicole Acosta**, an aspiring IT professional with a growing interest in data, technology, and software development. I’m a BS Information Technology student at Mapua University specializing in Enterprise Data Management.
 
-I approach problems with curiosity and a commitment to learning — whether that’s picking up a new framework, understanding network architecture, or figuring out why my code suddenly breaks.
+I’m particularly drawn to the world of data and enjoy exploring how information can be transformed into meaningful insights and solutions. Beyond data, I’m curious about cloud computing, artificial intelligence, and cybersecurity, while also enjoying both front-end and back-end development. I love exploring different areas of technology, experimenting with new ideas, and discovering how different tools and technologies work together.
+
+I believe that learning never really stops. I approach every opportunity with curiosity, an open mind, and the excitement to learn something new. Whether that’s picking up a new framework, understanding network architecture, diving deeper into systems design, or figuring out why my code suddenly breaks — I’m always looking forward to challenging myself, developing my skills, and turning what I learn into something meaningful.
 
 <br/>
 
