@@ -31,6 +31,34 @@ function animateCapybara() {
 
 animateCapybara();
 
+// Load custom projects from localStorage
+function loadCustomProjects() {
+    const projectsGrid = document.getElementById('projectsGrid');
+    if (!projectsGrid) return;
+
+    const customProjects = JSON.parse(localStorage.getItem('userProjects') || '[]');
+
+    if (customProjects.length > 0) {
+        const projectCards = customProjects.map(project => `
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>${project.title}</h3>
+                    <p class="project-date">${project.year}</p>
+                </div>
+                <p>${project.description}</p>
+                <div class="project-tags">
+                    ${project.tags.split(',').map(tag => `<span>${tag.trim()}</span>`).join('')}
+                </div>
+            </div>
+        `).join('');
+
+        projectsGrid.innerHTML += projectCards;
+    }
+}
+
+// Load projects on page load
+document.addEventListener('DOMContentLoaded', loadCustomProjects);
+
 // Add smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {

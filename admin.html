@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Marian Nicole</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .admin-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .admin-section {
+            background: white;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark-text);
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid var(--accent-pink);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-pink);
+            box-shadow: 0 0 0 3px rgba(212, 165, 165, 0.1);
+        }
+
+        .btn {
+            background-color: var(--brown);
+            color: white;
+            padding: 0.9rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-pink);
+            transform: translateY(-2px);
+        }
+
+        .project-item {
+            background: var(--light-pink);
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-pink);
+        }
+
+        .project-item h3 {
+            margin: 0 0 0.5rem 0;
+            color: var(--dark-brown);
+        }
+
+        .delete-btn {
+            background-color: #d32f2f;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        .delete-btn:hover {
+            background-color: #b71c1c;
+        }
+
+        .hidden-link {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 12px;
+            color: var(--accent-pink);
+            text-decoration: none;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo"><img src="assets/capy1.png" alt="Capybara" class="logo-img"> Admin Dashboard</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Back to Portfolio</a></li>
+                <li><a href="#" onclick="logout()">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="admin-container">
+        <div class="admin-section">
+            <h2>Add New Project</h2>
+            <form id="projectForm">
+                <div class="form-group">
+                    <label for="title">Project Title</label>
+                    <input type="text" id="title" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <input type="text" id="category" placeholder="e.g., Responsive Website, Mobile App">
+                </div>
+
+                <div class="form-group">
+                    <label for="year">Year</label>
+                    <input type="text" id="year" placeholder="e.g., 2025">
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" rows="4" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="tags">Tags (comma-separated)</label>
+                    <input type="text" id="tags" placeholder="e.g., HTML, CSS, JavaScript">
+                </div>
+
+                <button type="submit" class="btn">Add Project</button>
+            </form>
+        </div>
+
+        <div class="admin-section">
+            <h2>Your Projects</h2>
+            <div id="projectList"></div>
+        </div>
+    </div>
+
+    <div class="floating-capybara">
+        <img src="assets/capy1.png" alt="Capybara Cursor" class="capy-cursor-img">
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Check if logged in
+        if (!sessionStorage.getItem('adminLoggedIn')) {
+            window.location.href = 'login.html';
+        }
+
+        // Load projects from localStorage
+        function loadProjects() {
+            const projects = JSON.parse(localStorage.getItem('userProjects') || '[]');
+            const projectList = document.getElementById('projectList');
+
+            if (projects.length === 0) {
+                projectList.innerHTML = '<p style="color: var(--light-text);">No projects added yet.</p>';
+                return;
+            }
+
+            projectList.innerHTML = projects.map((project, index) => `
+                <div class="project-item">
+                    <h3>${project.title}</h3>
+                    <p><strong>${project.category}</strong> | ${project.year}</p>
+                    <p>${project.description}</p>
+                    <p><small>Tags: ${project.tags}</small></p>
+                    <button class="btn delete-btn" onclick="deleteProject(${index})">Delete</button>
+                </div>
+            `).join('');
+        }
+
+        // Add new project
+        document.getElementById('projectForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const project = {
+                title: document.getElementById('title').value,
+                category: document.getElementById('category').value,
+                year: document.getElementById('year').value,
+                description: document.getElementById('description').value,
+                tags: document.getElementById('tags').value
+            };
+
+            const projects = JSON.parse(localStorage.getItem('userProjects') || '[]');
+            projects.push(project);
+            localStorage.setItem('userProjects', JSON.stringify(projects));
+
+            document.getElementById('projectForm').reset();
+            loadProjects();
+            alert('Project added! Refresh your portfolio page to see it.');
+        });
+
+        // Delete project
+        function deleteProject(index) {
+            if (confirm('Are you sure you want to delete this project?')) {
+                const projects = JSON.parse(localStorage.getItem('userProjects') || '[]');
+                projects.splice(index, 1);
+                localStorage.setItem('userProjects', JSON.stringify(projects));
+                loadProjects();
+            }
+        }
+
+        // Logout
+        function logout() {
+            sessionStorage.removeItem('adminLoggedIn');
+            window.location.href = 'login.html';
+        }
+
+        // Load on page load
+        loadProjects();
+    </script>
+</body>
+</html>
