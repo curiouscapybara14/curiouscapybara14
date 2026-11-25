@@ -69,15 +69,15 @@ function loadSkills() {
     `).join('');
 }
 
-// Load custom projects from localStorage
+// Load projects from localStorage
 function loadCustomProjects() {
     const projectsGrid = document.getElementById('projectsGrid');
     if (!projectsGrid) return;
 
-    const customProjects = JSON.parse(localStorage.getItem('userProjects') || '[]');
+    const projects = JSON.parse(localStorage.getItem('userProjects') || '[]');
 
-    if (customProjects.length > 0) {
-        const projectCards = customProjects.map(project => `
+    if (projects.length > 0) {
+        const projectCards = projects.map(project => `
             <div class="project-card">
                 <div class="project-header">
                     <h3>${project.title}</h3>
