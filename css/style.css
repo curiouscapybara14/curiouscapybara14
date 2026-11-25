@@ -738,11 +738,12 @@ body {
     }
 
     .logo-img {
-        display: none;
+        width: 35px;
+        height: 35px;
     }
 
     .navbar {
-        padding: 1rem 0;
+        padding: 1.5rem 0;
     }
 
     .nav-links {
