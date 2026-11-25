@@ -115,15 +115,116 @@
             color: var(--dark-brown);
         }
 
-        .delete-btn {
-            background-color: #d32f2f;
-            padding: 0.5rem 1rem;
-            font-size: 0.9rem;
+        .btn-group {
+            display: flex;
+            gap: 0.5rem;
             margin-top: 1rem;
+            flex-wrap: wrap;
         }
 
-        .delete-btn:hover {
+        .btn-edit {
+            background-color: var(--primary-pink);
+            padding: 0.7rem 1.5rem;
+            font-size: 0.9rem;
+            flex: 1;
+            min-width: 80px;
+            border-radius: 25px;
+        }
+
+        .btn-edit:hover {
+            background-color: var(--darker-pink);
+            transform: translateY(-2px);
+        }
+
+        .btn-delete {
+            background-color: #d32f2f;
+            padding: 0.7rem 1.5rem;
+            font-size: 0.9rem;
+            flex: 1;
+            min-width: 80px;
+            border-radius: 25px;
+            border: none;
+        }
+
+        .btn-delete:hover {
             background-color: #b71c1c;
+            transform: translateY(-2px);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 2rem;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-header {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--dark-brown);
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .modal-buttons button {
+            flex: 1;
+            padding: 0.9rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-save {
+            background-color: var(--brown);
+            color: white;
+        }
+
+        .btn-save:hover {
+            background-color: var(--primary-pink);
+            transform: translateY(-2px);
+        }
+
+        .btn-cancel {
+            background-color: var(--accent-pink);
+            color: var(--dark-text);
+        }
+
+        .btn-cancel:hover {
+            background-color: #d0d0d0;
         }
 
         h2 {
@@ -348,6 +449,18 @@
         </div>
     </div>
 
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header" id="modalTitle">Edit Skill</div>
+            <div id="modalBody"></div>
+            <div class="modal-buttons">
+                <button class="btn-save" onclick="saveEdit()">Save Changes</button>
+                <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
     <div class="floating-capybara">
         <img src="assets/capy1.png" alt="Capybara Cursor" class="capy-cursor-img">
     </div>
@@ -390,7 +503,9 @@
                     <p><strong>${project.category}</strong> | ${project.year}</p>
                     <p>${project.description}</p>
                     <p><small>Tags: ${project.tags}</small></p>
-                    <button class="btn delete-btn" onclick="deleteProject(${index})">Delete</button>
+                    <div class="btn-group">
+                        <button class="btn btn-delete" onclick="deleteProject(${index})">Delete</button>
+                    </div>
                 </div>
             `).join('');
         }
@@ -420,7 +535,9 @@
                     <p><strong>${exp.expType}</strong> at ${exp.expOrganization}</p>
                     <p><small>${exp.expPeriod}</small></p>
                     ${exp.expDescription ? `<p>${exp.expDescription}</p>` : ''}
-                    <button class="btn delete-btn" onclick="deleteExperience(${index})">Delete</button>
+                    <div class="btn-group">
+                        <button class="btn btn-delete" onclick="deleteExperience(${index})">Delete</button>
+                    </div>
                 </div>
             `).join('');
         }
@@ -448,7 +565,9 @@
                 <div class="item">
                     <h3>${link.linkLabel}</h3>
                     <p><a href="${link.linkURL}" target="_blank" style="color: var(--primary-pink); text-decoration: underline;">${link.linkURL}</a></p>
-                    <button class="btn delete-btn" onclick="deleteLink(${index})">Delete</button>
+                    <div class="btn-group">
+                        <button class="btn btn-delete" onclick="deleteLink(${index})">Delete</button>
+                    </div>
                 </div>
             `).join('');
         }
@@ -674,6 +793,10 @@
             }
         }
 
+        // Global edit tracking
+        let currentEditingIndex = null;
+        let currentEditingType = null;
+
         function loadSkills() {
             const skills = JSON.parse(localStorage.getItem('userSkills') || '[]');
             const skillList = document.getElementById('skillList');
@@ -688,9 +811,9 @@
                     <h3>${skill.name}</h3>
                     <p><strong>Category:</strong> ${skill.category}</p>
                     <p><strong>Level:</strong> ${skill.level}</p>
-                    <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
-                        <button class="btn" style="background-color: var(--primary-pink); flex: 1;" onclick="editSkill(${index})">Edit</button>
-                        <button class="btn delete-btn" style="flex: 1;" onclick="deleteSkill(${index})">Delete</button>
+                    <div class="btn-group">
+                        <button class="btn btn-edit" onclick="editSkill(${index})">Edit</button>
+                        <button class="btn btn-delete" onclick="deleteSkill(${index})">Delete</button>
                     </div>
                 </div>
             `).join('');
@@ -700,25 +823,73 @@
             const skills = JSON.parse(localStorage.getItem('userSkills') || '[]');
             const skill = skills[index];
 
-            const newName = prompt('Skill Name:', skill.name);
-            if (newName === null) return;
+            currentEditingIndex = index;
+            currentEditingType = 'skill';
 
-            const newLevel = prompt('Proficiency Level (Beginner, Intermediate, Advanced, Expert):', skill.level);
-            if (newLevel === null) return;
+            const modalBody = document.getElementById('modalBody');
+            modalBody.innerHTML = `
+                <div class="form-group">
+                    <label for="editSkillName">Skill Name</label>
+                    <input type="text" id="editSkillName" value="${skill.name}">
+                </div>
+                <div class="form-group">
+                    <label for="editSkillLevel">Proficiency Level</label>
+                    <select id="editSkillLevel">
+                        <option value="Beginner" ${skill.level === 'Beginner' ? 'selected' : ''}>Beginner</option>
+                        <option value="Intermediate" ${skill.level === 'Intermediate' ? 'selected' : ''}>Intermediate</option>
+                        <option value="Advanced" ${skill.level === 'Advanced' ? 'selected' : ''}>Advanced</option>
+                        <option value="Expert" ${skill.level === 'Expert' ? 'selected' : ''}>Expert</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="editSkillCategory">Category</label>
+                    <select id="editSkillCategory">
+                        <option value="Frontend" ${skill.category === 'Frontend' ? 'selected' : ''}>Frontend</option>
+                        <option value="Backend" ${skill.category === 'Backend' ? 'selected' : ''}>Backend</option>
+                        <option value="Data & AI" ${skill.category === 'Data & AI' ? 'selected' : ''}>Data & AI</option>
+                        <option value="DevOps & Tools" ${skill.category === 'DevOps & Tools' ? 'selected' : ''}>DevOps & Tools</option>
+                        <option value="Design" ${skill.category === 'Design' ? 'selected' : ''}>Design</option>
+                        <option value="Other" ${skill.category === 'Other' ? 'selected' : ''}>Other</option>
+                    </select>
+                </div>
+            `;
 
-            const newCategory = prompt('Category (or leave blank for AI to categorize):', skill.category);
-            if (newCategory === null) return;
-
-            skills[index] = {
-                name: newName || skill.name,
-                level: newLevel || skill.level,
-                category: newCategory || skill.category
-            };
-
-            localStorage.setItem('userSkills', JSON.stringify(skills));
-            loadSkills();
-            alert('Skill updated!');
+            document.getElementById('modalTitle').textContent = 'Edit Skill';
+            openModal();
         }
+
+        function saveEdit() {
+            if (currentEditingType === 'skill') {
+                const skills = JSON.parse(localStorage.getItem('userSkills') || '[]');
+                skills[currentEditingIndex] = {
+                    name: document.getElementById('editSkillName').value,
+                    level: document.getElementById('editSkillLevel').value,
+                    category: document.getElementById('editSkillCategory').value
+                };
+                localStorage.setItem('userSkills', JSON.stringify(skills));
+                loadSkills();
+                closeModal();
+                alert('✅ Skill updated!');
+            }
+        }
+
+        function openModal() {
+            document.getElementById('editModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('editModal').style.display = 'none';
+            currentEditingIndex = null;
+            currentEditingType = null;
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('editModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        };
 
         function deleteSkill(index) {
             if (confirm('Delete this skill?')) {
