@@ -31,6 +31,44 @@ function animateCapybara() {
 
 animateCapybara();
 
+// Load About Me from localStorage
+function loadAboutMe() {
+    const aboutContent = document.getElementById('aboutContent');
+    if (!aboutContent) return;
+
+    const about = localStorage.getItem('userAbout') || 'Hi, I\'m Marian (Aria) Nicole Acosta, an aspiring IT professional with a growing interest in data, technology, and software development. I\'m particularly drawn to the world of data and enjoy exploring how information can be transformed into meaningful insights and solutions.<br><br>Beyond data, I\'m curious about cloud computing, artificial intelligence, and cybersecurity, while also enjoying both front-end and back-end development. I love exploring different areas of technology, experimenting with new ideas, and discovering how different tools and technologies work together.<br><br>I believe that learning never really stops. I approach every opportunity with curiosity, an open mind, and the excitement to learn something new. When I\'m not coding, you\'ll find me running around (marathon dreams), being Soy\'s personal assistant (full-time cat mom duties), exploring new places, professionally napping, and turning random bursts of inspiration into creative projects.';
+
+    aboutContent.innerHTML = about.split('\n').map(p => p.trim()).filter(p => p).map(p => `<p>${p.replace(/\n/g, '<br>')}</p>`).join('');
+}
+
+// Load Skills from localStorage
+function loadSkills() {
+    const skillsContainer = document.getElementById('skillsContainer');
+    if (!skillsContainer) return;
+
+    const skills = JSON.parse(localStorage.getItem('userSkills') || '[]');
+
+    if (skills.length === 0) {
+        skillsContainer.innerHTML = '<p style="text-align: center; color: var(--light-text);">No skills added yet.</p>';
+        return;
+    }
+
+    const grouped = {};
+    skills.forEach(skill => {
+        if (!grouped[skill.category]) grouped[skill.category] = [];
+        grouped[skill.category].push(skill.name);
+    });
+
+    skillsContainer.innerHTML = Object.entries(grouped).map(([category, categorySkills]) => `
+        <div class="skill-category">
+            <h3>${category}</h3>
+            <ul class="skills-list">
+                ${categorySkills.map(skill => `<li>${skill}</li>`).join('')}
+            </ul>
+        </div>
+    `).join('');
+}
+
 // Load custom projects from localStorage
 function loadCustomProjects() {
     const projectsGrid = document.getElementById('projectsGrid');
@@ -101,8 +139,10 @@ function loadCustomLinks() {
     }
 }
 
-// Load projects, experiences, and links on page load
+// Load all content on page load
 document.addEventListener('DOMContentLoaded', () => {
+    loadAboutMe();
+    loadSkills();
     loadCustomProjects();
     loadCustomExperiences();
     loadCustomLinks();
