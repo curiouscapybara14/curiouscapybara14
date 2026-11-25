@@ -90,7 +90,7 @@ If you're also learning, exploring tech, or just want to chat about ideas, I'd l
 
 <div align="center">
 
-<a href="mailto:marmar14141414@gmail.com"><img src="https://img.shields.io/badge/Email-8B7355?style=flat-square&logo=gmail&logoColor=white" alt="Email"/></a>
+<a href="mailto:costanicoa@gmail.com"><img src="https://img.shields.io/badge/Email-8B7355?style=flat-square&logo=gmail&logoColor=white" alt="Email"/></a>
 <a href="https://www.linkedin.com/in/acostamariannicole/"><img src="https://img.shields.io/badge/LinkedIn-D4A5A5?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
 <a href="https://github.com/curiouscapybara14"><img src="https://img.shields.io/badge/GitHub-6B5344?style=flat-square&logo=github&logoColor=white" alt="GitHub"/></a>
 <a href="https://curiouscapybara.vercel.app"><img src="https://img.shields.io/badge/Portfolio-C4949A?style=flat-square&logoColor=white" alt="Portfolio"/></a>
