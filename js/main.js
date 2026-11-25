@@ -18,9 +18,9 @@ function animateCapybara() {
     capyX += (mouseX - capyX) * 0.15;
     capyY += (mouseY - capyY) * 0.15;
 
-    // Scale from 3 (large) down to small as it chases cursor
+    // Scale from 1.5 (small-medium) down to small as it chases cursor
     const distance = Math.sqrt(Math.pow(mouseX - capyX, 2) + Math.pow(mouseY - capyY, 2));
-    const scale = Math.max(0.6, 3 - (distance / 100));
+    const scale = Math.max(0.7, 1.5 - (distance / 150));
 
     floatingCapybara.style.left = capyX + 'px';
     floatingCapybara.style.top = capyY + 'px';
