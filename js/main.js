@@ -56,8 +56,40 @@ function loadCustomProjects() {
     }
 }
 
-// Load projects on page load
-document.addEventListener('DOMContentLoaded', loadCustomProjects);
+// Load experiences from localStorage
+function loadCustomExperiences() {
+    const experienceList = document.getElementById('experienceList');
+    const experienceContainer = document.getElementById('experienceContainer');
+    const noExperience = document.getElementById('noExperience');
+
+    if (!experienceList) return;
+
+    const customExperiences = JSON.parse(localStorage.getItem('userExperiences') || '[]');
+
+    if (customExperiences.length > 0) {
+        const experienceCards = customExperiences.map(exp => `
+            <div class="experience-item">
+                <h3>${exp.expTitle}</h3>
+                <div class="experience-meta">
+                    <span><strong>${exp.expType}</strong></span>
+                    <span>${exp.expOrganization}</span>
+                    <span>${exp.expPeriod}</span>
+                </div>
+                ${exp.expDescription ? `<p>${exp.expDescription}</p>` : ''}
+            </div>
+        `).join('');
+
+        experienceList.innerHTML = experienceCards;
+        experienceContainer.style.display = 'block';
+        noExperience.style.display = 'none';
+    }
+}
+
+// Load projects and experiences on page load
+document.addEventListener('DOMContentLoaded', () => {
+    loadCustomProjects();
+    loadCustomExperiences();
+});
 
 // Add smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {

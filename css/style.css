@@ -492,6 +492,57 @@ body {
     filter: drop-shadow(0 2px 4px rgba(139, 115, 85, 0.3));
 }
 
+/* Experience Section */
+.experience {
+    background-color: var(--white);
+    padding: 4rem 0;
+}
+
+.experience h2 {
+    margin-bottom: 3rem;
+}
+
+.experience-item {
+    background: var(--light-pink);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 10px;
+    border-left: 5px solid var(--primary-pink);
+    transition: all 0.3s ease;
+}
+
+.experience-item:hover {
+    box-shadow: 0 4px 12px rgba(212, 165, 165, 0.2);
+    transform: translateY(-2px);
+}
+
+.experience-item h3 {
+    color: var(--dark-brown);
+    margin: 0 0 0.5rem 0;
+    font-size: 1.3rem;
+}
+
+.experience-meta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    color: var(--brown);
+    flex-wrap: wrap;
+}
+
+.experience-meta span {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+}
+
+.experience-item p {
+    color: var(--light-text);
+    line-height: 1.7;
+    margin: 0.5rem 0;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .hero h1 {
