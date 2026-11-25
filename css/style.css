@@ -720,13 +720,20 @@ body {
     }
 
     /* Navigation */
+    .navbar {
+        padding: 1.5rem 0;
+    }
+
     .navbar .container {
+        flex-direction: column;
         justify-content: center;
+        align-items: center;
     }
 
     .logo {
         font-size: 1rem;
         justify-content: center;
+        align-items: center;
         gap: 0;
     }
 
