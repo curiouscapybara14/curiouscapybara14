@@ -14,13 +14,17 @@ document.addEventListener('mousemove', (e) => {
 });
 
 function animateCapybara() {
-    // Smooth easing towards cursor
-    capyX += (mouseX - capyX) * 0.1;
-    capyY += (mouseY - capyY) * 0.1;
+    // Smooth easing towards cursor with scaling
+    capyX += (mouseX - capyX) * 0.15;
+    capyY += (mouseY - capyY) * 0.15;
+
+    // Scale from 3 (large) down to small as it chases cursor
+    const distance = Math.sqrt(Math.pow(mouseX - capyX, 2) + Math.pow(mouseY - capyY, 2));
+    const scale = Math.max(0.6, 3 - (distance / 100));
 
     floatingCapybara.style.left = capyX + 'px';
     floatingCapybara.style.top = capyY + 'px';
-    floatingCapybara.style.transform = 'translate(-50%, -50%)';
+    floatingCapybara.style.transform = `translate(-50%, -50%) scale(${scale})`;
 
     requestAnimationFrame(animateCapybara);
 }
