@@ -11,8 +11,7 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
-            <div class="logo"><img src="assets/capy1.png" alt="Capybara" class="logo-img"> Curious Capybara</div>
-            <ul class="nav-links">
+            <div class="logo"><img src="assets/capy.svg" alt="Capybara" class="logo-img"> Curious Capybara</div>        <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#skills">Skills</a></li>
@@ -43,8 +42,10 @@
     <section id="about" class="about">
         <div class="container">
             <h2>About Me</h2>
-            <div class="about-content" id="aboutContent">
-                <p>Loading...</p>
+            <div class="about-content">
+                <p>Hi, I'm Marian (Aria) Nicole Acosta, an aspiring IT professional with a growing interest in data, technology, and software development. I'm particularly drawn to the world of data and enjoy exploring how information can be transformed into meaningful insights and solutions.</p>
+                <p>Beyond data, I'm curious about cloud computing, artificial intelligence, and cybersecurity, while also enjoying both front-end and back-end development. I love exploring different areas of technology, experimenting with new ideas, and discovering how different tools and technologies work together.</p>
+                <p>I believe that learning never really stops. I approach every opportunity with curiosity, an open mind, and the excitement to learn something new. When I'm not coding, you'll find me running around (marathon dreams), being Soy's personal assistant (full-time cat mom duties), exploring new places, professionally napping, and turning random bursts of inspiration into creative projects.</p>
             </div>
         </div>
     </section>
@@ -53,8 +54,43 @@
     <section id="projects" class="projects">
         <div class="container">
             <h2>Projects</h2>
-            <div class="projects-grid" id="projectsGrid">
-                <p style="grid-column: 1/-1; text-align: center; color: var(--light-text);">Loading projects...</p>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>KAIA</h3>
+                        <p class="project-date">2025</p>
+                    </div>
+                    <p>An NGO discovery and volunteer platform bringing scattered Filipino organizations into one verified ecosystem. Features verified profiles, multi-step donations, QR check-in for volunteers, and financial transparency.</p>
+                    <div class="project-tags">
+                        <span>Responsive Design</span>
+                        <span>Web</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>LakbAI</h3>
+                        <p class="project-date">2025</p>
+                    </div>
+                    <p>A commuter information system concept combining real-time traffic, CCTV feeds, and crowdsourced reports with accessibility features for seniors and people with disabilities.</p>
+                    <div class="project-tags">
+                        <span>Systems Analysis</span>
+                        <span>Design</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Sassy Station</h3>
+                        <p class="project-date">2025</p>
+                    </div>
+                    <p>An online booking website for a nail salon in Bauang, La Union, allowing clients to browse services and schedule appointments seamlessly.</p>
+                    <div class="project-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -62,21 +98,49 @@
     <!-- Skills Section -->
     <section id="skills" class="skills">
         <div class="container">
-            <h2>Skills</h2>
-            <div class="skills-container" id="skillsContainer">
-                <p style="text-align: center; color: var(--light-text);">Loading skills...</p>
+            <h2>My Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Frontend & Web</h3>
+                    <ul class="skills-list">
+                        <li>HTML5</li>
+                        <li>CSS3</li>
+                        <li>JavaScript</li>
+                        <li>Responsive Design</li>
+                        <li>UI/UX Wireframing</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Data & Backend</h3>
+                    <ul class="skills-list">
+                        <li>SQL</li>
+                        <li>MySQL</li>
+                        <li>Python</li>
+                        <li>PHP</li>
+                        <li>Data Analysis</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools & Systems</h3>
+                    <ul class="skills-list">
+                        <li>Git & GitHub</li>
+                        <li>VSCode</li>
+                        <li>Figma</li>
+                        <li>Systems Analysis</li>
+                        <li>CCNA Certified</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Interests</h3>
+                    <ul class="skills-list">
+                        <li>Cloud Computing</li>
+                        <li>AI & LLMs</li>
+                        <li>Cybersecurity</li>
+                        <li>Data Science</li>
+                        <li>Enterprise Data Mgmt</li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience" class="experience">
-        <div class="container">
-            <h2>Experience & Works</h2>
-            <div id="experienceContainer" style="display: none;">
-                <div id="experienceList"></div>
-            </div>
-            <p id="noExperience" style="text-align: center; color: var(--light-text);">Start adding your experience to showcase your journey.</p>
         </div>
     </section>
 
@@ -85,7 +149,7 @@
         <div class="container">
             <h2>Let's Connect</h2>
             <p>I'd love to hear from you! Feel free to reach out on LinkedIn or drop me an email.</p>
-            <div class="contact-links" id="contactLinks">
+            <div class="contact-links">
                 <a href="https://www.linkedin.com/in/acostamariannicole/" class="contact-button" target="_blank">LinkedIn</a>
                 <a href="mailto:costanicoa@gmail.com" class="contact-button">Email</a>
             </div>
@@ -96,10 +160,8 @@
         <p>Made by Marian Nicole Acosta | 2026</p>
     </footer>
 
-    <!-- Capybara Cursor -->
-    <div class="floating-capybara">
-        <img src="assets/capy1.png" alt="Capybara Cursor" class="capy-cursor-img">
-    </div>
+    <!-- Floating Capybara -->
+    <div class="floating-capybara">🫒</div>
 
     <script src="js/main.js"></script>
 </body>

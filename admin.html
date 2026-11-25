@@ -78,7 +78,6 @@
             border-radius: 8px;
             font-family: inherit;
             font-size: 1rem;
-            box-sizing: border-box;
         }
 
         input:focus, textarea:focus, select:focus {
@@ -132,170 +131,6 @@
             font-size: 1.5rem;
             margin-bottom: 1.5rem;
         }
-
-        .skill-input {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .skill-input input {
-            flex: 1;
-        }
-
-        .skill-input button {
-            padding: 0.5rem 1rem;
-            background-color: #d32f2f;
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .admin-container {
-                padding: 1.5rem;
-            }
-
-            .tabs {
-                gap: 0.5rem;
-                overflow-x: auto;
-                scroll-behavior: smooth;
-            }
-
-            .tab-button {
-                padding: 0.8rem 1rem;
-                font-size: 0.75rem;
-                white-space: nowrap;
-                border-radius: 5px;
-            }
-
-            .admin-section {
-                padding: 1.5rem;
-                margin: 1.5rem 0;
-            }
-
-            h2 {
-                font-size: 1.3rem;
-                margin-bottom: 1rem;
-            }
-
-            input, textarea, select {
-                font-size: 16px !important;
-                padding: 0.7rem !important;
-            }
-
-            .btn {
-                width: 100%;
-                padding: 0.9rem;
-                font-size: 0.95rem;
-            }
-
-            .item {
-                padding: 1.2rem;
-                margin: 0.8rem 0;
-            }
-
-            .delete-btn {
-                width: 100%;
-                padding: 0.6rem;
-                font-size: 0.85rem;
-            }
-
-            label {
-                font-size: 0.9rem;
-                margin-bottom: 0.4rem;
-            }
-
-            .form-group {
-                margin-bottom: 1.2rem;
-            }
-
-            .skill-input {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-
-            .skill-input input {
-                width: 100%;
-            }
-
-            .skill-input button {
-                width: 100%;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .admin-container {
-                padding: 1rem;
-            }
-
-            .tabs {
-                gap: 0.3rem;
-                margin-bottom: 1.5rem;
-            }
-
-            .tab-button {
-                padding: 0.6rem 0.8rem;
-                font-size: 0.65rem;
-                border-radius: 4px;
-            }
-
-            .admin-section {
-                padding: 1rem;
-                margin: 1rem 0;
-                border-radius: 10px;
-            }
-
-            h2 {
-                font-size: 1.1rem;
-                margin-bottom: 0.8rem;
-            }
-
-            input, textarea, select {
-                font-size: 16px !important;
-                padding: 0.6rem !important;
-                border-radius: 6px;
-            }
-
-            .btn {
-                width: 100%;
-                padding: 0.8rem;
-                font-size: 0.9rem;
-                border-radius: 20px;
-            }
-
-            .item {
-                padding: 1rem;
-                margin: 0.6rem 0;
-                border-radius: 8px;
-            }
-
-            .item h3 {
-                font-size: 1rem;
-            }
-
-            .item p {
-                font-size: 0.9rem;
-            }
-
-            .delete-btn {
-                width: 100%;
-                padding: 0.5rem;
-                font-size: 0.8rem;
-            }
-
-            label {
-                font-size: 0.85rem;
-                margin-bottom: 0.3rem;
-            }
-
-            .form-group {
-                margin-bottom: 1rem;
-            }
-
-            textarea {
-                resize: vertical;
-                min-height: 100px;
-            }
-        }
     </style>
 </head>
 <body>
@@ -312,56 +147,13 @@
     <div class="admin-container">
         <!-- Tabs -->
         <div class="tabs">
-            <button class="tab-button active" onclick="switchTab('about')">About</button>
-            <button class="tab-button" onclick="switchTab('skills')">Skills</button>
-            <button class="tab-button" onclick="switchTab('projects')">Projects</button>
+            <button class="tab-button active" onclick="switchTab('projects')">Projects</button>
             <button class="tab-button" onclick="switchTab('experience')">Experience</button>
             <button class="tab-button" onclick="switchTab('links')">Links</button>
         </div>
 
-        <!-- About Tab -->
-        <div id="about" class="tab-content active">
-            <div class="admin-section">
-                <h2>Edit About Me</h2>
-                <form id="aboutForm">
-                    <div class="form-group">
-                        <label for="aboutText">About Me Description</label>
-                        <textarea id="aboutText" rows="6" required></textarea>
-                    </div>
-                    <button type="submit" class="btn">Save About Me</button>
-                </form>
-            </div>
-            <div class="admin-section">
-                <h2>Current About Me</h2>
-                <div id="aboutDisplay"></div>
-            </div>
-        </div>
-
-        <!-- Skills Tab -->
-        <div id="skills" class="tab-content">
-            <div class="admin-section">
-                <h2>Add Skill</h2>
-                <form id="skillForm">
-                    <div class="form-group">
-                        <label for="skillCategory">Category</label>
-                        <input type="text" id="skillCategory" placeholder="e.g., Frontend & Web" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="skillName">Skill Name</label>
-                        <input type="text" id="skillName" placeholder="e.g., JavaScript" required>
-                    </div>
-                    <button type="submit" class="btn">Add Skill</button>
-                </form>
-            </div>
-
-            <div class="admin-section">
-                <h2>Your Skills</h2>
-                <div id="skillsList"></div>
-            </div>
-        </div>
-
         <!-- Projects Tab -->
-        <div id="projects" class="tab-content">
+        <div id="projects" class="tab-content active">
             <div class="admin-section">
                 <h2>Add New Project</h2>
                 <form id="projectForm">
@@ -478,87 +270,27 @@
 
     <script src="js/main.js"></script>
     <script>
+        // Check if logged in
         if (!sessionStorage.getItem('adminLoggedIn')) {
             window.location.href = 'login.html';
         }
 
+        // Tab switching
         function switchTab(tabName) {
-            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Show selected tab
             document.getElementById(tabName).classList.add('active');
             event.target.classList.add('active');
         }
 
-        // ===== ABOUT ME =====
-        function loadAbout() {
-            const about = localStorage.getItem('userAbout') || '';
-            document.getElementById('aboutText').value = about;
-            document.getElementById('aboutDisplay').innerHTML = about ? `<p>${about.replace(/\n/g, '<br>')}</p>` : '<p style="color: var(--light-text);">No about me added yet.</p>';
-        }
-
-        document.getElementById('aboutForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const about = document.getElementById('aboutText').value;
-            localStorage.setItem('userAbout', about);
-            loadAbout();
-            alert('About Me updated!');
-        });
-
-        // ===== SKILLS =====
-        function loadSkills() {
-            const skills = JSON.parse(localStorage.getItem('userSkills') || '[]');
-            const skillsList = document.getElementById('skillsList');
-
-            if (skills.length === 0) {
-                skillsList.innerHTML = '<p style="color: var(--light-text);">No skills added yet.</p>';
-                return;
-            }
-
-            const grouped = {};
-            skills.forEach(skill => {
-                if (!grouped[skill.category]) grouped[skill.category] = [];
-                grouped[skill.category].push(skill);
-            });
-
-            skillsList.innerHTML = Object.entries(grouped).map(([category, categorySkills]) => `
-                <div class="item">
-                    <h3>${category}</h3>
-                    ${categorySkills.map((skill, idx) => `
-                        <div style="display: inline-block; margin-right: 1rem; margin-bottom: 0.5rem;">
-                            ${skill.name}
-                            <button class="delete-btn" onclick="deleteSkill('${category}', '${skill.name}')" style="padding: 0.2rem 0.5rem; font-size: 0.8rem; margin: 0;">✕</button>
-                        </div>
-                    `).join('')}
-                </div>
-            `).join('');
-        }
-
-        function deleteSkill(category, name) {
-            if (confirm('Delete this skill?')) {
-                let skills = JSON.parse(localStorage.getItem('userSkills') || '[]');
-                skills = skills.filter(s => !(s.category === category && s.name === name));
-                localStorage.setItem('userSkills', JSON.stringify(skills));
-                loadSkills();
-            }
-        }
-
-        document.getElementById('skillForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const skill = {
-                category: document.getElementById('skillCategory').value,
-                name: document.getElementById('skillName').value
-            };
-
-            const skills = JSON.parse(localStorage.getItem('userSkills') || '[]');
-            skills.push(skill);
-            localStorage.setItem('userSkills', JSON.stringify(skills));
-
-            document.getElementById('skillForm').reset();
-            loadSkills();
-            alert('Skill added!');
-        });
-
-        // ===== PROJECTS =====
+        // Load projects
         function loadProjects() {
             const projects = JSON.parse(localStorage.getItem('userProjects') || '[]');
             const projectList = document.getElementById('projectList');
@@ -588,27 +320,7 @@
             }
         }
 
-        document.getElementById('projectForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            const project = {
-                title: document.getElementById('title').value,
-                category: document.getElementById('category').value,
-                year: document.getElementById('year').value,
-                description: document.getElementById('description').value,
-                tags: document.getElementById('tags').value
-            };
-
-            const projects = JSON.parse(localStorage.getItem('userProjects') || '[]');
-            projects.push(project);
-            localStorage.setItem('userProjects', JSON.stringify(projects));
-
-            document.getElementById('projectForm').reset();
-            loadProjects();
-            alert('Project added!');
-        });
-
-        // ===== EXPERIENCE =====
+        // Load experiences
         function loadExperiences() {
             const experiences = JSON.parse(localStorage.getItem('userExperiences') || '[]');
             const experienceList = document.getElementById('experienceList');
@@ -638,33 +350,13 @@
             }
         }
 
-        document.getElementById('experienceForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            const experience = {
-                expType: document.getElementById('expType').value,
-                expTitle: document.getElementById('expTitle').value,
-                expOrganization: document.getElementById('expOrganization').value,
-                expPeriod: document.getElementById('expPeriod').value,
-                expDescription: document.getElementById('expDescription').value
-            };
-
-            const experiences = JSON.parse(localStorage.getItem('userExperiences') || '[]');
-            experiences.push(experience);
-            localStorage.setItem('userExperiences', JSON.stringify(experiences));
-
-            document.getElementById('experienceForm').reset();
-            loadExperiences();
-            alert('Experience added!');
-        });
-
-        // ===== LINKS =====
+        // Load links
         function loadLinks() {
             const links = JSON.parse(localStorage.getItem('userLinks') || '[]');
             const linkList = document.getElementById('linkList');
 
             if (links.length === 0) {
-                linkList.innerHTML = '<p style="color: var(--light-text);">No custom links added yet.</p>';
+                linkList.innerHTML = '<p style="color: var(--light-text);">No custom links added yet. Add some to show on your portfolio!</p>';
                 return;
             }
 
@@ -686,6 +378,47 @@
             }
         }
 
+        // Form submissions
+        document.getElementById('projectForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const project = {
+                title: document.getElementById('title').value,
+                category: document.getElementById('category').value,
+                year: document.getElementById('year').value,
+                description: document.getElementById('description').value,
+                tags: document.getElementById('tags').value
+            };
+
+            const projects = JSON.parse(localStorage.getItem('userProjects') || '[]');
+            projects.push(project);
+            localStorage.setItem('userProjects', JSON.stringify(projects));
+
+            document.getElementById('projectForm').reset();
+            loadProjects();
+            alert('Project added!');
+        });
+
+        document.getElementById('experienceForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const experience = {
+                expType: document.getElementById('expType').value,
+                expTitle: document.getElementById('expTitle').value,
+                expOrganization: document.getElementById('expOrganization').value,
+                expPeriod: document.getElementById('expPeriod').value,
+                expDescription: document.getElementById('expDescription').value
+            };
+
+            const experiences = JSON.parse(localStorage.getItem('userExperiences') || '[]');
+            experiences.push(experience);
+            localStorage.setItem('userExperiences', JSON.stringify(experiences));
+
+            document.getElementById('experienceForm').reset();
+            loadExperiences();
+            alert('Experience added!');
+        });
+
         document.getElementById('linkForm').addEventListener('submit', (e) => {
             e.preventDefault();
 
@@ -703,13 +436,17 @@
             alert('Link added!');
         });
 
+        // Logout
         function logout() {
             sessionStorage.removeItem('adminLoggedIn');
             window.location.href = 'login.html';
         }
 
+        // Initialize default projects if none exist
         function initializeDefaults() {
-            if (!localStorage.getItem('userProjects')) {
+            const existingProjects = JSON.parse(localStorage.getItem('userProjects') || '[]');
+
+            if (existingProjects.length === 0) {
                 const defaultProjects = [
                     {
                         title: 'KAIA',
@@ -735,38 +472,10 @@
                 ];
                 localStorage.setItem('userProjects', JSON.stringify(defaultProjects));
             }
-
-            if (!localStorage.getItem('userSkills')) {
-                const defaultSkills = [
-                    { category: 'Frontend & Web', name: 'HTML5' },
-                    { category: 'Frontend & Web', name: 'CSS3' },
-                    { category: 'Frontend & Web', name: 'JavaScript' },
-                    { category: 'Frontend & Web', name: 'Responsive Design' },
-                    { category: 'Frontend & Web', name: 'UI/UX Wireframing' },
-                    { category: 'Data & Backend', name: 'SQL' },
-                    { category: 'Data & Backend', name: 'MySQL' },
-                    { category: 'Data & Backend', name: 'Python' },
-                    { category: 'Data & Backend', name: 'PHP' },
-                    { category: 'Data & Backend', name: 'Data Analysis' },
-                    { category: 'Tools & Systems', name: 'Git & GitHub' },
-                    { category: 'Tools & Systems', name: 'VSCode' },
-                    { category: 'Tools & Systems', name: 'Figma' },
-                    { category: 'Tools & Systems', name: 'Systems Analysis' },
-                    { category: 'Tools & Systems', name: 'CCNA Certified' },
-                    { category: 'Interests', name: 'Cloud Computing' },
-                    { category: 'Interests', name: 'AI & LLMs' },
-                    { category: 'Interests', name: 'Cybersecurity' },
-                    { category: 'Interests', name: 'Data Science' },
-                    { category: 'Interests', name: 'Enterprise Data Mgmt' }
-                ];
-                localStorage.setItem('userSkills', JSON.stringify(defaultSkills));
-            }
         }
 
         // Load on page load
         initializeDefaults();
-        loadAbout();
-        loadSkills();
         loadProjects();
         loadExperiences();
         loadLinks();
