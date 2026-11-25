@@ -85,10 +85,27 @@ function loadCustomExperiences() {
     }
 }
 
-// Load projects and experiences on page load
+// Load custom links for Let's Connect
+function loadCustomLinks() {
+    const contactLinks = document.getElementById('contactLinks');
+    if (!contactLinks) return;
+
+    const customLinks = JSON.parse(localStorage.getItem('userLinks') || '[]');
+
+    if (customLinks.length > 0) {
+        const linkButtons = customLinks.map(link => `
+            <a href="${link.linkURL}" class="contact-button" target="_blank">${link.linkLabel}</a>
+        `).join('');
+
+        contactLinks.innerHTML += linkButtons;
+    }
+}
+
+// Load projects, experiences, and links on page load
 document.addEventListener('DOMContentLoaded', () => {
     loadCustomProjects();
     loadCustomExperiences();
+    loadCustomLinks();
 });
 
 // Add smooth scrolling for navigation links
