@@ -441,7 +441,40 @@
             window.location.href = 'login.html';
         }
 
+        // Initialize default projects if none exist
+        function initializeDefaults() {
+            const existingProjects = JSON.parse(localStorage.getItem('userProjects') || '[]');
+
+            if (existingProjects.length === 0) {
+                const defaultProjects = [
+                    {
+                        title: 'KAIA',
+                        category: 'Responsive Website',
+                        year: '2025',
+                        description: 'An NGO discovery and volunteer platform bringing scattered Filipino organizations into one verified ecosystem. Features verified profiles, multi-step donations, QR check-in for volunteers, and financial transparency.',
+                        tags: 'Responsive Design, Web'
+                    },
+                    {
+                        title: 'LakbAI',
+                        category: 'Systems Analysis & Design',
+                        year: '2025',
+                        description: 'A commuter information system concept combining real-time traffic, CCTV feeds, and crowdsourced reports with accessibility features for seniors and people with disabilities.',
+                        tags: 'Systems Analysis, Design'
+                    },
+                    {
+                        title: 'Sassy Station',
+                        category: 'HTML, CSS, JavaScript',
+                        year: '2025',
+                        description: 'An online booking website for a nail salon in Bauang, La Union, allowing clients to browse services and schedule appointments seamlessly.',
+                        tags: 'HTML, CSS, JavaScript'
+                    }
+                ];
+                localStorage.setItem('userProjects', JSON.stringify(defaultProjects));
+            }
+        }
+
         // Load on page load
+        initializeDefaults();
         loadProjects();
         loadExperiences();
         loadLinks();
