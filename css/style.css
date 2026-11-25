@@ -735,6 +735,7 @@ body {
         justify-content: center;
         align-items: center;
         gap: 0;
+        margin-bottom: 1rem;
     }
 
     .logo-img {
@@ -742,14 +743,14 @@ body {
     }
 
     .navbar {
-        padding: 1.5rem 0;
+        padding: 1.5rem 0 2rem 0;
     }
 
     .nav-links {
         gap: 0.8rem;
         font-size: 0.75rem;
         position: absolute;
-        bottom: 0.8rem;
+        bottom: 1rem;
         right: 12px;
         width: auto;
     }
