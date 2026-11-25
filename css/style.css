@@ -691,13 +691,18 @@ body {
     }
 
     /* Navigation */
+    .navbar .container {
+        justify-content: center;
+    }
+
     .logo {
-        font-size: 1.1rem;
+        font-size: 1rem;
+        justify-content: center;
+        gap: 0;
     }
 
     .logo-img {
-        width: 30px;
-        height: 30px;
+        display: none;
     }
 
     .navbar {
@@ -707,6 +712,10 @@ body {
     .nav-links {
         gap: 0.8rem;
         font-size: 0.75rem;
+        position: absolute;
+        bottom: 0.8rem;
+        right: 12px;
+        width: auto;
     }
 
     .nav-links a {
