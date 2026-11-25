@@ -90,7 +90,7 @@ function loadCustomProjects() {
             </div>
         `).join('');
 
-        projectsGrid.innerHTML += projectCards;
+        projectsGrid.innerHTML = projectCards;
     }
 }
 
