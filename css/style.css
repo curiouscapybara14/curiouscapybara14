@@ -544,33 +544,351 @@ body {
 }
 
 /* Responsive */
+/* Tablet (768px and below) */
 @media (max-width: 768px) {
-    .hero h1 {
-        font-size: 2.5rem;
+    .container {
+        padding: 0 15px;
     }
 
-    .hero .subtitle {
-        font-size: 1.2rem;
+    /* Navigation */
+    .navbar .container {
+        flex-wrap: wrap;
+    }
+
+    .logo {
+        font-size: 1.3rem;
+    }
+
+    .logo-img {
+        width: 35px;
+        height: 35px;
     }
 
     .nav-links {
-        gap: 1.5rem;
-        font-size: 0.9rem;
+        gap: 1rem;
+        font-size: 0.85rem;
     }
 
+    .nav-links a {
+        padding: 0.5rem 1rem;
+    }
+
+    /* Hero Section */
+    .hero {
+        padding: 3rem 0;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero .subtitle {
+        font-size: 1rem;
+    }
+
+    .hero .tagline {
+        font-size: 0.95rem;
+    }
+
+    .cta-button {
+        padding: 0.8rem 1.8rem;
+        font-size: 0.95rem;
+    }
+
+    .avatar-wrapper {
+        width: 150px;
+        height: 150px;
+    }
+
+    /* About Section */
+    .about-content p {
+        font-size: 0.95rem;
+    }
+
+    /* Projects */
     .projects-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
 
+    .project-card {
+        padding: 1.5rem;
+    }
+
+    .project-header {
+        flex-direction: column;
+    }
+
+    .project-date {
+        margin-top: 0.5rem;
+    }
+
+    /* Skills */
     .skills-container {
         grid-template-columns: 1fr;
     }
 
-    h2 {
-        font-size: 2rem;
+    .skill-category {
+        padding: 1.5rem;
     }
 
+    .skills-list li {
+        font-size: 0.9rem;
+    }
+
+    /* General */
+    h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+
+    section {
+        padding: 2.5rem 0 !important;
+    }
+
+    /* Forms */
+    input, textarea, select {
+        font-size: 16px !important;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1rem;
+    }
+
+    .cta-button {
+        width: auto;
+    }
+
+    /* Contact Links */
+    .contact-links {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .contact-button {
+        flex: 1;
+        min-width: 120px;
+    }
+
+    /* Capybara Cursor */
     .floating-capybara {
-        font-size: 2.5rem;
+        width: 20px;
+        height: 20px;
+    }
+
+    .capy-cursor-img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+/* Mobile (480px and below) */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 12px;
+    }
+
+    /* Navigation */
+    .logo {
+        font-size: 1.1rem;
+    }
+
+    .logo-img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .navbar {
+        padding: 1rem 0;
+    }
+
+    .nav-links {
+        gap: 0.8rem;
+        font-size: 0.75rem;
+    }
+
+    .nav-links a {
+        padding: 0.4rem 0.8rem;
+    }
+
+    /* Hero Section */
+    .hero {
+        padding: 2rem 0;
+    }
+
+    .hero-content {
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+        line-height: 1.3;
+    }
+
+    .hero .subtitle {
+        font-size: 0.9rem;
+        margin: 0.8rem 0;
+    }
+
+    .hero .tagline {
+        font-size: 0.85rem;
+        margin: 1rem 0;
+    }
+
+    .avatar-wrapper {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 1.5rem;
+    }
+
+    .capybara-emoji {
+        font-size: 3rem;
+    }
+
+    /* About Section */
+    .about-content p {
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Projects */
+    .projects-grid {
+        gap: 1rem;
+    }
+
+    .project-card {
+        padding: 1.2rem;
+        border-radius: 10px;
+    }
+
+    .project-header h3 {
+        font-size: 1.1rem;
+    }
+
+    .project-date {
+        font-size: 0.75rem;
+    }
+
+    .project-card p {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+
+    .project-tags span {
+        font-size: 0.7rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    /* Skills */
+    .skill-category h3 {
+        font-size: 1.1rem;
+    }
+
+    .skills-list li {
+        font-size: 0.85rem;
+        padding: 0.5rem 1rem;
+    }
+
+    /* Experience */
+    .experience-item {
+        padding: 1.2rem;
+    }
+
+    .experience-item h3 {
+        font-size: 1rem;
+    }
+
+    .experience-meta {
+        gap: 0.5rem;
+        font-size: 0.85rem;
+    }
+
+    .experience-meta span {
+        padding: 0.2rem 0.6rem;
+    }
+
+    /* Contact */
+    h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .contact-links {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .contact-button {
+        width: 100%;
+        padding: 1rem;
+        font-size: 0.95rem;
+    }
+
+    /* Footer */
+    .footer p {
+        font-size: 0.85rem;
+    }
+
+    /* General */
+    section {
+        padding: 2rem 0 !important;
+    }
+
+    .cta-button {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    /* Forms */
+    input, textarea, select {
+        font-size: 16px !important;
+        padding: 0.7rem !important;
+    }
+
+    label {
+        font-size: 0.9rem;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 0.9rem;
+        font-size: 0.95rem;
+        border-radius: 20px;
+    }
+
+    .delete-btn {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    /* Capybara Cursor */
+    .floating-capybara {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+/* Large Desktop (1200px+) */
+@media (min-width: 1200px) {
+    .container {
+        padding: 0 40px;
+    }
+
+    .nav-links {
+        gap: 3rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .skills-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .hero h1 {
+        font-size: 3.5rem;
     }
 }
