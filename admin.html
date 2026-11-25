@@ -318,19 +318,31 @@
         <!-- Settings Tab -->
         <div id="settings" class="tab-content">
             <div class="admin-section">
-                <h2>⚙️ API Configuration</h2>
+                <h2>🤖 AI Assistant Setup</h2>
+                <div id="aiStatus" style="padding: 1rem; margin-bottom: 1.5rem; background: var(--light-pink); border-radius: 8px; border-left: 4px solid var(--primary-pink);">
+                    <p style="margin: 0; color: var(--dark-text);">
+                        <strong>🤖 AI Status:</strong> <span id="statusText" style="color: var(--brown);">Not configured</span>
+                    </p>
+                </div>
+
+                <h3 style="color: var(--dark-brown); margin-top: 1.5rem;">Gemini API Configuration</h3>
                 <form id="settingsForm">
                     <div class="form-group">
-                        <label for="geminiApiKey">Gemini API Key</label>
-                        <input type="password" id="geminiApiKey" placeholder="Paste your Gemini API key here">
+                        <label for="geminiApiKey">Gemini API Key (FREE)</label>
+                        <input type="password" id="geminiApiKey" placeholder="Paste your free Gemini API key here">
                         <small style="color: var(--light-text);">
-                            Get your free API key from <a href="https://aistudio.google.com/app/apikey" target="_blank" style="color: var(--primary-pink);">Google AI Studio</a>
+                            🎁 Get your free API key from <a href="https://aistudio.google.com/app/apikey" target="_blank" style="color: var(--primary-pink); font-weight: bold;">Google AI Studio</a> (no credit card required)
                         </small>
                     </div>
-                    <button type="submit" class="btn">Save API Key</button>
+                    <button type="submit" class="btn">Save & Connect AI</button>
                 </form>
+
                 <p style="margin-top: 1.5rem; padding: 1rem; background: var(--accent-pink); border-radius: 8px; color: var(--dark-text);">
-                    <strong>ℹ️ Note:</strong> Your API key is stored locally in your browser and never sent to external servers (except to Google when calling Gemini API). It's used to automatically categorize skills using AI.
+                    <strong>✨ What This Does:</strong><br>
+                    • Automatically categorizes skills when you add them<br>
+                    • Smartly groups skills: Frontend, Backend, Data & AI, DevOps & Tools, Design<br>
+                    • Completely FREE with generous rate limits<br>
+                    • Stored locally in your browser (never shared)
                 </p>
             </div>
         </div>
@@ -514,19 +526,43 @@
             const apiKey = document.getElementById('geminiApiKey').value;
             if (apiKey.trim()) {
                 localStorage.setItem('geminiApiKey', apiKey);
-                alert('API key saved successfully!');
                 document.getElementById('geminiApiKey').value = '';
+                updateAIStatus();
+                alert('🤖 AI Assistant Connected!\n\nYour Gemini API key is now saved.\n\nGo to the Skills tab to start adding skills with AI categorization!');
             } else {
                 alert('Please enter a valid API key.');
             }
         });
 
+        // Update AI status indicator
+        function updateAIStatus() {
+            const savedApiKey = localStorage.getItem('geminiApiKey');
+            const statusText = document.getElementById('statusText');
+            const aiStatus = document.getElementById('aiStatus');
+
+            if (savedApiKey) {
+                statusText.textContent = '✅ Connected & Ready';
+                statusText.style.color = '#4CAF50';
+                aiStatus.style.borderLeftColor = '#4CAF50';
+                aiStatus.style.background = 'rgba(76, 175, 80, 0.1)';
+                document.getElementById('geminiApiKey').placeholder = '••••••••• (API key saved)';
+            } else {
+                statusText.textContent = '❌ Not configured';
+                statusText.style.color = '#d32f2f';
+                aiStatus.style.borderLeftColor = '#d32f2f';
+                aiStatus.style.background = 'rgba(211, 47, 47, 0.1)';
+            }
+        }
+
         // Load saved API key on page load
         window.addEventListener('DOMContentLoaded', () => {
-            const savedApiKey = localStorage.getItem('geminiApiKey');
-            if (savedApiKey) {
-                // Don't show the full key for security, just show it's saved
-                document.getElementById('geminiApiKey').placeholder = '••••••••• (API key saved)';
+            updateAIStatus();
+        });
+
+        // Also update when page becomes visible
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) {
+                updateAIStatus();
             }
         });
 
@@ -595,12 +631,12 @@
             }
         }
 
-        // Skills Management
+        // Skills Management with AI Assistant
         async function categorizeSkillWithAI(skillName) {
             const GEMINI_API_KEY = localStorage.getItem('geminiApiKey');
 
             if (!GEMINI_API_KEY) {
-                return 'Uncategorized'; // Fallback if no API key
+                return 'Other'; // Fallback if no API key
             }
 
             try {
@@ -618,12 +654,23 @@
                     })
                 });
 
+                if (!response.ok) {
+                    console.error('API Error:', response.status, response.statusText);
+                    return 'Other';
+                }
+
                 const data = await response.json();
+
+                if (!data.candidates || !data.candidates[0] || !data.candidates[0].content || !data.candidates[0].content.parts) {
+                    console.error('Unexpected API response:', data);
+                    return 'Other';
+                }
+
                 const category = data.candidates[0].content.parts[0].text.trim();
                 return category;
             } catch (error) {
-                console.error('Error categorizing skill:', error);
-                return 'Uncategorized';
+                console.error('Error categorizing skill with AI:', error);
+                return 'Other';
             }
         }
 
@@ -641,9 +688,36 @@
                     <h3>${skill.name}</h3>
                     <p><strong>Category:</strong> ${skill.category}</p>
                     <p><strong>Level:</strong> ${skill.level}</p>
-                    <button class="btn delete-btn" onclick="deleteSkill(${index})">Delete</button>
+                    <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+                        <button class="btn" style="background-color: var(--primary-pink); flex: 1;" onclick="editSkill(${index})">Edit</button>
+                        <button class="btn delete-btn" style="flex: 1;" onclick="deleteSkill(${index})">Delete</button>
+                    </div>
                 </div>
             `).join('');
+        }
+
+        function editSkill(index) {
+            const skills = JSON.parse(localStorage.getItem('userSkills') || '[]');
+            const skill = skills[index];
+
+            const newName = prompt('Skill Name:', skill.name);
+            if (newName === null) return;
+
+            const newLevel = prompt('Proficiency Level (Beginner, Intermediate, Advanced, Expert):', skill.level);
+            if (newLevel === null) return;
+
+            const newCategory = prompt('Category (or leave blank for AI to categorize):', skill.category);
+            if (newCategory === null) return;
+
+            skills[index] = {
+                name: newName || skill.name,
+                level: newLevel || skill.level,
+                category: newCategory || skill.category
+            };
+
+            localStorage.setItem('userSkills', JSON.stringify(skills));
+            loadSkills();
+            alert('Skill updated!');
         }
 
         function deleteSkill(index) {
@@ -661,10 +735,17 @@
             const skillName = document.getElementById('skillName').value;
             const skillLevel = document.getElementById('skillLevel').value;
 
+            // Check if API key is set
+            const apiKey = localStorage.getItem('geminiApiKey');
+            if (!apiKey) {
+                alert('⚠️ Gemini API key not configured!\n\n1. Go to Settings tab\n2. Add your free API key from Google AI Studio\n3. Try adding the skill again');
+                return;
+            }
+
             // Show loading state
             const submitBtn = e.target.querySelector('button[type="submit"]');
             submitBtn.disabled = true;
-            submitBtn.textContent = 'Categorizing...';
+            submitBtn.textContent = '🤖 Categorizing with AI...';
 
             const category = await categorizeSkillWithAI(skillName);
 
@@ -684,7 +765,7 @@
             submitBtn.textContent = 'Add Skill';
 
             loadSkills();
-            alert(`Skill added! Category: ${category}`);
+            alert(`✅ Skill added!\n\n📂 Category: ${category}\n\nIf you want to change the category, click Edit on the skill below.`);
         });
 
         // Load on page load
@@ -693,6 +774,11 @@
         loadExperiences();
         loadSkills();
         loadLinks();
+
+        // Update AI status when page loads
+        setTimeout(() => {
+            updateAIStatus();
+        }, 100);
     </script>
 </body>
 </html>
