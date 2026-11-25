@@ -57,6 +57,15 @@ body {
     letter-spacing: 1px;
     color: var(--dark-brown);
     text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo-img {
+    width: 35px;
+    height: 35px;
+    display: inline-block;
 }
 
 .nav-links {
