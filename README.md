@@ -17,7 +17,7 @@
 
 ## 🌱 about me
 
-Hi! I'm Aria, a curious beginner in the world of tech and data. I'm genuinely excited about learning how information can be transformed into meaningful insights, and I love exploring different areas of technology—whether that's cloud computing, data analysis, cybersecurity, or web development.
+Hi! I'm Aria, a curious beginner in the world of tech and data. I'm genuinely excited about learning how information can be transformed into meaningful insights, and I love exploring different areas of technology—whether that's data, cloud, cybersecurity, or web development.
 
 I believe learning never really stops. I approach everything with curiosity, an open mind, and genuine excitement about what I might discover next. Right now, I'm in that beautiful phase where I'm still figuring things out, and I'm totally okay with that. Every mistake is just a learning opportunity, and every new concept makes me want to dig deeper.
 
