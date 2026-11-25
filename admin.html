@@ -504,10 +504,46 @@
                     <p>${project.description}</p>
                     <p><small>Tags: ${project.tags}</small></p>
                     <div class="btn-group">
+                        <button class="btn btn-edit" onclick="editProject(${index})">Edit</button>
                         <button class="btn btn-delete" onclick="deleteProject(${index})">Delete</button>
                     </div>
                 </div>
             `).join('');
+        }
+
+        function editProject(index) {
+            const projects = JSON.parse(localStorage.getItem('userProjects') || '[]');
+            const project = projects[index];
+
+            currentEditingIndex = index;
+            currentEditingType = 'project';
+
+            const modalBody = document.getElementById('modalBody');
+            modalBody.innerHTML = `
+                <div class="form-group">
+                    <label for="editProjectTitle">Project Title</label>
+                    <input type="text" id="editProjectTitle" value="${project.title}">
+                </div>
+                <div class="form-group">
+                    <label for="editProjectCategory">Category</label>
+                    <input type="text" id="editProjectCategory" value="${project.category}">
+                </div>
+                <div class="form-group">
+                    <label for="editProjectYear">Year</label>
+                    <input type="text" id="editProjectYear" value="${project.year}">
+                </div>
+                <div class="form-group">
+                    <label for="editProjectDescription">Description</label>
+                    <textarea id="editProjectDescription" rows="3">${project.description}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="editProjectTags">Tags (comma-separated)</label>
+                    <input type="text" id="editProjectTags" value="${project.tags}">
+                </div>
+            `;
+
+            document.getElementById('modalTitle').textContent = 'Edit Project';
+            openModal();
         }
 
         function deleteProject(index) {
@@ -536,10 +572,52 @@
                     <p><small>${exp.expPeriod}</small></p>
                     ${exp.expDescription ? `<p>${exp.expDescription}</p>` : ''}
                     <div class="btn-group">
+                        <button class="btn btn-edit" onclick="editExperience(${index})">Edit</button>
                         <button class="btn btn-delete" onclick="deleteExperience(${index})">Delete</button>
                     </div>
                 </div>
             `).join('');
+        }
+
+        function editExperience(index) {
+            const experiences = JSON.parse(localStorage.getItem('userExperiences') || '[]');
+            const exp = experiences[index];
+
+            currentEditingIndex = index;
+            currentEditingType = 'experience';
+
+            const modalBody = document.getElementById('modalBody');
+            modalBody.innerHTML = `
+                <div class="form-group">
+                    <label for="editExpType">Type</label>
+                    <select id="editExpType">
+                        <option value="Work Experience" ${exp.expType === 'Work Experience' ? 'selected' : ''}>Work Experience</option>
+                        <option value="Education" ${exp.expType === 'Education' ? 'selected' : ''}>Education</option>
+                        <option value="Certification" ${exp.expType === 'Certification' ? 'selected' : ''}>Certification</option>
+                        <option value="Award" ${exp.expType === 'Award' ? 'selected' : ''}>Award</option>
+                        <option value="Other" ${exp.expType === 'Other' ? 'selected' : ''}>Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="editExpTitle">Title / Position</label>
+                    <input type="text" id="editExpTitle" value="${exp.expTitle}">
+                </div>
+                <div class="form-group">
+                    <label for="editExpOrganization">Organization / Company / School</label>
+                    <input type="text" id="editExpOrganization" value="${exp.expOrganization}">
+                </div>
+                <div class="form-group">
+                    <label for="editExpPeriod">Period</label>
+                    <input type="text" id="editExpPeriod" value="${exp.expPeriod}">
+                </div>
+                <div class="form-group">
+                    <label for="editExpDescription">Description</label>
+                    <textarea id="editExpDescription" rows="3">${exp.expDescription || ''}</textarea>
+                </div>
+            `;
+
+            document.getElementById('modalTitle').textContent = 'Edit Experience';
+            openModal();
         }
 
         function deleteExperience(index) {
@@ -566,10 +644,34 @@
                     <h3>${link.linkLabel}</h3>
                     <p><a href="${link.linkURL}" target="_blank" style="color: var(--primary-pink); text-decoration: underline;">${link.linkURL}</a></p>
                     <div class="btn-group">
+                        <button class="btn btn-edit" onclick="editLink(${index})">Edit</button>
                         <button class="btn btn-delete" onclick="deleteLink(${index})">Delete</button>
                     </div>
                 </div>
             `).join('');
+        }
+
+        function editLink(index) {
+            const links = JSON.parse(localStorage.getItem('userLinks') || '[]');
+            const link = links[index];
+
+            currentEditingIndex = index;
+            currentEditingType = 'link';
+
+            const modalBody = document.getElementById('modalBody');
+            modalBody.innerHTML = `
+                <div class="form-group">
+                    <label for="editLinkLabel">Label</label>
+                    <input type="text" id="editLinkLabel" value="${link.linkLabel}">
+                </div>
+                <div class="form-group">
+                    <label for="editLinkURL">URL</label>
+                    <input type="url" id="editLinkURL" value="${link.linkURL}">
+                </div>
+            `;
+
+            document.getElementById('modalTitle').textContent = 'Edit Link';
+            openModal();
         }
 
         function deleteLink(index) {
@@ -870,6 +972,42 @@
                 loadSkills();
                 closeModal();
                 alert('✅ Skill updated!');
+            } else if (currentEditingType === 'project') {
+                const projects = JSON.parse(localStorage.getItem('userProjects') || '[]');
+                projects[currentEditingIndex] = {
+                    title: document.getElementById('editProjectTitle').value,
+                    category: document.getElementById('editProjectCategory').value,
+                    year: document.getElementById('editProjectYear').value,
+                    description: document.getElementById('editProjectDescription').value,
+                    tags: document.getElementById('editProjectTags').value
+                };
+                localStorage.setItem('userProjects', JSON.stringify(projects));
+                loadProjects();
+                closeModal();
+                alert('✅ Project updated!');
+            } else if (currentEditingType === 'experience') {
+                const experiences = JSON.parse(localStorage.getItem('userExperiences') || '[]');
+                experiences[currentEditingIndex] = {
+                    expType: document.getElementById('editExpType').value,
+                    expTitle: document.getElementById('editExpTitle').value,
+                    expOrganization: document.getElementById('editExpOrganization').value,
+                    expPeriod: document.getElementById('editExpPeriod').value,
+                    expDescription: document.getElementById('editExpDescription').value
+                };
+                localStorage.setItem('userExperiences', JSON.stringify(experiences));
+                loadExperiences();
+                closeModal();
+                alert('✅ Experience updated!');
+            } else if (currentEditingType === 'link') {
+                const links = JSON.parse(localStorage.getItem('userLinks') || '[]');
+                links[currentEditingIndex] = {
+                    linkLabel: document.getElementById('editLinkLabel').value,
+                    linkURL: document.getElementById('editLinkURL').value
+                };
+                localStorage.setItem('userLinks', JSON.stringify(links));
+                loadLinks();
+                closeModal();
+                alert('✅ Link updated!');
             }
         }
 
